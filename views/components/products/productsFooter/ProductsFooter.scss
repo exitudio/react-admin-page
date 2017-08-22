@@ -1,0 +1,43 @@
+@import '../../../scss/Config.scss';
+.products{
+    .products-footer{
+        margin-top: 20px;
+        .footer-left{
+            float:left;
+            display: flex;
+            .description{
+                float: left;
+                font-size: 16px;
+                color: $gray-dark;
+                align-self: center;
+            }
+            .item-per-page-dropdown{
+                float: left;
+                width:100px;
+                margin-left: 8px;
+                align-self: center;
+            }
+        }
+        
+        .footer-right{
+            .next-back-button{
+                float: right;
+                width:6px;
+                height: 10px;
+                padding: 11px 13px 11px 13px;
+                margin-left:8px;
+            }
+            .page-dropdown{
+                float: right;
+                width:100px;
+                margin-left:8px;
+            }
+        }
+        
+    }
+    .products-footer:after{
+        display: table;
+        content: " ";
+        clear: both;
+    }
+}

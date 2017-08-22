@@ -1,0 +1,52 @@
+$head-font-color: #000;
+$list-font-color: #526578;
+
+$gray-light: #DBDFE2;
+$gray-mid: #c3cad0;
+$gray-dark: #7b8a99;
+
+$blue-light:#00aaff;
+$blue-dark:#0076ff;
+
+
+
+
+$animate-time : .3s;
+@mixin addTransition($variableName) {
+    -webkit-transition: $variableName $animate-time  ease-out ;
+    -moz-transition:    $variableName $animate-time  ease-out ;
+    -o-transition:      $variableName $animate-time  ease-out ;
+    transition:         $variableName $animate-time  ease-out ;
+}
+
+@mixin addCustomTransition($argument...){
+    $transition: ();
+    @each $i in $argument {
+        $transition: append($transition, $i $animate-time ease-out, comma );
+    }
+    -webkit-transition: $transition;
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    transition:         $transition;
+    //transition: height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+
+
+%border-style{
+    border: 1px solid;
+    border-radius: 0.2rem;
+}
+%input-style{
+    @include addCustomTransition(border-color);
+    @extend %border-style;
+    background-color:white;
+    border-color:$gray-mid;
+    color:$gray-dark;
+}
+%input-stype-table{
+    height: 34px;
+    font-size: 16px;
+    padding:1px 6px 1px 6px;
+    @extend %input-style;
+}

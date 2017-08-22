@@ -1,0 +1,15 @@
+@import '../../../scss/Config.scss';
+select {
+    &.dropdown{
+        align-self: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url('./dropdown-arrow.jpg');
+        background-repeat: no-repeat;
+        background-position: right 10px top 14px;
+        padding:4px;
+        cursor: pointer;
+        width: 100%;
+        @extend %input-stype-table;
+    }
+}

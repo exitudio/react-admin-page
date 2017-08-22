@@ -1,0 +1,23 @@
+.products{
+    .products-header{
+        .products-header-top{
+            .left-header{
+                float: left;
+                font-size: 28px;
+            }
+            .right-header{
+                float: right;
+            }
+            .button-right{
+                float: left;
+                margin-left: 16px;
+            }
+        }
+        
+        .products-header-top:after, .button-right::after, .left-header:after, .right-header:after {
+            display: table;
+            content: " ";
+            clear: both;
+        }
+    }
+}

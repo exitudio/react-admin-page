@@ -1,0 +1,90 @@
+@import '../../../scss/Config.scss';
+
+.products{
+    .table{
+        width:100%;
+
+        td{
+            vertical-align: top;
+            padding:10px;
+            border-bottom:1pt solid $gray-light;
+        }
+
+        .name-column{
+            .name-column-wrapper{
+                display: flex;
+                .checkbox{
+                    align-self: center;
+                    input[type="checkbox"] {
+                        display:none;
+                    }
+                    input[type="checkbox"] +  span {
+                        display:block;
+                        width:18px;
+                        height:18px;
+                        @extend %border-style;
+                        border-color: $gray-mid;
+                        cursor:pointer;
+                    }
+                    input[type="checkbox"]:checked + span {
+                        background-image: url('./checked.jpg');
+                        border-color: white;
+                    }
+                }
+            }
+    
+            .thumbnail{
+                align-self: center;
+                float: left;
+                margin-left:16px;
+                width:32px;
+                height:32px;
+                @extend %border-style;
+                border-color: $gray-mid;
+            }
+            .item-name{
+                align-self: center;
+                flex-grow: 1;
+                margin-left:12px;
+                
+
+                width: auto;
+                @extend %input-stype-table;
+            }
+            
+        }
+
+        .type-column{
+            select{
+                align-self: center;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                background-image: url('./dropdown-arrow.jpg');
+                background-repeat: no-repeat;
+                background-position: right 10px top 14px;
+                padding:4px;
+                
+                width: 100%;
+                @extend %input-stype-table;
+            }
+        }
+
+        .price-column{
+            input{
+                width: 100%;
+                @extend %input-stype-table;
+            }
+        }
+        .inventory-column{
+            input{
+                width: 100%;
+                @extend %input-stype-table;
+            }
+        }
+
+        
+        .item-input:focus{
+            border-color: $blue-dark;
+        }
+    }
+}

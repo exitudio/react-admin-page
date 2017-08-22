@@ -1,0 +1,32 @@
+@import '../../../scss/Config.scss';
+
+.button{
+    @include addCustomTransition(color, background-color);
+    padding: 14px 26px;
+    @extend %border-style;
+    cursor: pointer;
+    
+    background-color:white;
+    border-color:$gray-mid;
+    color:$gray-dark;
+    &.disable{
+        opacity: 0.5;
+        cursor: default;
+    }
+}
+.button:not(.disable):hover{
+    background-color: $gray-light;
+    border-color: $gray-light;
+    color: white;
+}
+
+.button.blue{
+    background-color: $blue-dark;
+    border-color: $blue-dark;
+    color: white;
+}
+.button.blue:hover{
+    background-color: $blue-light;
+    border-color: $blue-light;
+    color: #fff;
+}
