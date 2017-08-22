@@ -1,17 +1,11 @@
 import React from 'react'
 import Item from './item/Item.jsx'
 import './Table.scss'
+import TableHead from './tableHead/TableHead.jsx'
 const Table = props=>{
     return <table className="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Price</th>
-                <th>Inventory</th>
-            </tr>
-        </thead>
-        <Item/>
+        <TableHead/>
+        <Item active/>
         <Item/>
         <Item/>
         <Item/>

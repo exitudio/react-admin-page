@@ -1,7 +1,8 @@
-@import '../../../scss/Config.scss';
+@import '../../../../scss/Config.scss';
 
 .search-bar-container{
     position: relative;
+    margin-top: 20px;
     .search-bar{
         padding: 12px 12px 12px 56px;
         width:300px;

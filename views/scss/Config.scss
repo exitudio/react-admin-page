@@ -1,6 +1,7 @@
 $head-font-color: #000;
 $list-font-color: #526578;
 
+$gray-very-light: #F9F9F9;
 $gray-light: #DBDFE2;
 $gray-mid: #c3cad0;
 $gray-dark: #7b8a99;
@@ -43,10 +44,8 @@ $animate-time : .3s;
     background-color:white;
     border-color:$gray-mid;
     color:$gray-dark;
-}
-%input-stype-table{
+
     height: 34px;
     font-size: 16px;
     padding:1px 6px 1px 6px;
-    @extend %input-style;
 }

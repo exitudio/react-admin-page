@@ -1,0 +1,33 @@
+@import '../../../../../scss/Config.scss';
+
+.products{
+    .table{
+        thead>tr>th{
+            text-align: right;
+            vertical-align: middle;
+            padding:10px;
+            border-bottom:1pt solid $gray-light;
+            cursor: pointer;
+            .head-wrapper{
+                display: flex;
+                justify-content: flex-end;
+                &.align-left{
+                    justify-content: flex-start;
+                }
+                .text-column{
+                    align-self: center;
+                }
+                .arrow{
+                    align-self: center;
+                    margin-left: 5px;
+                }
+            }
+        }
+        thead>tr>th:hover{
+            background-color: $gray-very-light;
+        }
+        tbody>tr:hover{
+            background-color:$gray-very-light;
+        }
+    }
+}

@@ -2,8 +2,8 @@ import React from 'react'
 import './ProductsFooter.scss'
 import Dropdown from '../../sharedComponent/dropdown/Dropdown.jsx'
 import Button from '../../sharedComponent/button/Button.jsx'
-import backArrow from './backArrow.png'
-import nextArrow from './nextArrow.png'
+import backArrow from './images/backArrow.png'
+import nextArrow from './images/nextArrow.png'
 
 export default props=>{
     return <div className="products-footer">

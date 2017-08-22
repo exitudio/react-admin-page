@@ -1,3 +1,4 @@
+@import '../../scss/Config.scss';
 .conatiner{
     margin: 28px 52px;
 }
@@ -11,4 +12,12 @@ body{
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     font-family: "Lato",Arial,Helvetica,sans-serif;
+}
+
+input{
+    width: 100%;
+    @extend %input-style;
+}
+input:focus{
+    border-color: $blue-dark;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import './ProductsHeader.scss'
-import Button from '../sharedComponent/button/Button.jsx'
-import SearchBar from '../sharedComponent/searchBar/SearchBar.jsx'
+import Button from '../../sharedComponent/button/Button.jsx'
+import SearchBar from './searchBar/SearchBar.jsx'
 
 const ProductHeader = () => {
     return <div className="products-header">
@@ -10,7 +10,7 @@ const ProductHeader = () => {
                     <div className="right-header">
                         <Button className="button-right">Export</Button>
                         <Button className="button-right">Import</Button>
-                        <Button className="button-right blue">Add Product3</Button>
+                        <Button className="button-right blue">Add Product</Button>
                     </div>
                 </div>
 

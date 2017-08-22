@@ -10,6 +10,6 @@ select {
         padding:4px;
         cursor: pointer;
         width: 100%;
-        @extend %input-stype-table;
+        @extend %input-style;
     }
 }

@@ -1,9 +1,12 @@
 import React from 'react'
-import ProductHeader from './ProductsHeader.jsx'
-import Table from './table/Table.jsx'
+import ProductHeader from './productsHeader/ProductsHeader.jsx'
+import Table from './productsTable/Table.jsx'
 import ProductsFooter from './productsFooter/ProductsFooter.jsx'
 
 export default class Product extends React.Component{
+    componentDidMount(){
+        
+    }
     render(){
         return(
             <div className="products">

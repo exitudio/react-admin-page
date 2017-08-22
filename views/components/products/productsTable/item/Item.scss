@@ -1,0 +1,23 @@
+@import '../../../../scss/Config.scss';
+
+.products{
+    .table{
+        width:100%;
+        td{
+            vertical-align: top;
+            padding:10px;
+            border-bottom:1pt solid $gray-light;
+            &.checkbox-td{
+                padding-right:0;
+                .checkbox-wrapper{
+                    margin-top:6px;
+                }
+            }
+            &.text-column{
+                text-align: right;
+                vertical-align: middle;
+                color: $gray-dark;
+            }
+        }
+    }
+}

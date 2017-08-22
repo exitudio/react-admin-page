@@ -1,0 +1,41 @@
+@import '../../../../../scss/Config.scss';
+
+.products{
+    .table{
+        .name-column{
+            padding-left:0px;
+            .name-column-wrapper{
+                display: flex;
+                .align-center{
+                    align-self: center;
+                }
+            }
+    
+            .thumbnail{
+                align-self: center;
+                float: left;
+                margin-left:6px;
+                width:32px;
+                height:32px;
+                @extend %border-style;
+                border-color: $gray-mid;
+            }
+            input{
+                &.item-name{
+                    align-self: center;
+                    flex-grow: 1;
+                    margin-left:12px;
+                    width: auto;
+                }
+            }
+            div{
+                &.item-name{
+                    align-self: center;
+                    margin: 3px;
+                    margin-left: auto;
+                    color: $gray-dark;
+                }
+            }
+        }
+    }
+}

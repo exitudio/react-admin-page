@@ -1,3 +1,4 @@
+@import '../../../scss/Config.scss';
 .products{
     .products-header{
         .products-header-top{
@@ -20,4 +21,15 @@
             clear: both;
         }
     }
+}
+
+// change button style
+.button.blue{
+    background-color: $blue-dark;
+    border-color: $blue-dark;
+    color: white;
+}
+.button.blue:hover{
+    background-color: $blue-light !important;
+    border-color: $blue-light !important;
 }
