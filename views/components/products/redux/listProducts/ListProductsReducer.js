@@ -1,14 +1,17 @@
 import * as ListProductsAction from './ListProductsAction'
-import {ITEMS_PER_PAGE_TYPES, ASCEND, DECEND} from '../ProductsDataType'
-import { updateAllProducts, getCurrentProducts, addSearchText } from './ProductsQueryHelper'
+import {ITEMS_PER_PAGE_TYPES, ASCEND, DESCEND} from '../ProductsDataType'
+import { updateAllProducts, getCurrentProducts, sortBy, addSearchText } from './ProductsQueryHelper'
 
 const inititialState = {
-    products: [],
+    displayProducts: [],
     totalPage: 0,
     itemsPerPage: ITEMS_PER_PAGE_TYPES[0],
     currentPageId: 0,
     sortType: '',
     sortDirection: '',
+    searchText: '',
+    currentEdit: {},
+    isEditAll: false,
 }
 
 export default function productsReducer(state = inititialState, action) {
@@ -59,24 +62,51 @@ export default function productsReducer(state = inititialState, action) {
             return {
                 ...state,
                 ...productsPageObject,
+                searchText: action.payload,
             }
         }
         case ListProductsAction.UPDATE_SORT:{
-            let productsPageObject = getCurrentProducts(state.itemsPerPage, state.currentPageId)
             let sortDirection = ''
             if( state.sortType === action.payload ){
-                sortDirection = state.sortDirection===ASCEND ? DECEND: ASCEND
+                sortDirection = state.sortDirection===ASCEND ? DESCEND: ASCEND
             }else{
                 sortDirection = ASCEND
             }
+            let sortType = action.payload
+
+            sortBy(sortType, sortDirection)
+            addSearchText(state.searchText)
+
+            let productsPageObject = getCurrentProducts(state.itemsPerPage, state.currentPageId)
             return {
                 ...state,
                 ...productsPageObject,
-                sortType: action.payload,
+                sortType,
                 sortDirection,
             }
         }
+        case ListProductsAction.EDIT_PRODUCT:{
+            const currentEdit = {...state.currentEdit}
+            currentEdit[action.payload.productId] = action.payload.editMode
+            return {
+                ...state,
+                currentEdit,
+            }
+        }
+        case ListProductsAction.EDIT_ALL_PRODUCT:{
+            const currentEdit = {...state.currentEdit}
+            for(let i=0; i<state.products.length; i++){
+                currentEdit[ state.products[i].id ] = action.payload
+            }
+            return {
+                ...state,
+                currentEdit,
+                isEditAll: action.payload,
+            }
+        }
         default:
-            return state
+            return {
+                ...state
+            }
     }
 }

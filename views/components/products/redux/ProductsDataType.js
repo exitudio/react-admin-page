@@ -1,9 +1,9 @@
-export const SORT_NAME = 'sort_name'
-export const SORT_TYPE = 'sort_type'
-export const SORT_PRICE = 'sort_price'
-export const SORT_INVENTORY = 'sort_inventory'
+export const SORT_NAME = 'name'
+export const SORT_TYPE = 'type'
+export const SORT_PRICE = 'price'
+export const SORT_INVENTORY = 'inventory'
 
-export const DECEND = 'decend'
+export const DESCEND = 'descend'
 export const ASCEND = 'ascend'
 
 export const PRODUCT_TYPES = ['Physical', 'Knowledge', 'Technology', 'Healthy']

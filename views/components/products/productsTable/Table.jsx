@@ -27,15 +27,15 @@ class Table extends React.Component {
                 return <table className="table">
                     <TableHead />
                     {
-                        this.props.products.map((product, i) => {
+                        this.props.displayProducts.map((product, i) => {
                             return <Item
+                                id={product.id}
                                 name={product.name}
                                 thumbnail={product.thumbnail}
                                 type={product.type}
                                 price={product.price}
                                 inventory={product.inventory}
                                 key={i}
-                                active
                             />
                         })
                     }
@@ -47,7 +47,7 @@ class Table extends React.Component {
 const mapStateToProps = state => {
     return {
         loadStatus: state.loadProductsReducer.loadStatus,
-        products: state.listProductsReducer.products,
+        displayProducts: state.listProductsReducer.displayProducts,
     }
 }
 export default connect(mapStateToProps)(Table)

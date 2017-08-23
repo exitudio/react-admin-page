@@ -3,10 +3,10 @@ import './SearchBar.scss'
 import SearchIcon from './search_icon.jpg'
 import InputText from '../../../sharedComponent/inputText/InputText.jsx'
 import store from '../../../../redux/store'
-import {search} from '../../redux/listProducts/ListProductsAction'
+import {searchAction} from '../../redux/listProducts/ListProductsAction'
 export default class SearchBar extends React.Component{
     onChange = value=>{
-        store.dispatch( search(value) )
+        store.dispatch( searchAction(value) )
     }
     render(){
         return <div className="search-bar-container">

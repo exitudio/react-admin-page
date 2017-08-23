@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {updateSort} from '../../../redux/listProducts/ListProductsAction'
-import {SORT_NAME, SORT_TYPE, SORT_PRICE, SORT_INVENTORY, ASCEND, DECEND} from '../../../redux/ProductsDataType'
+import {updateSortAction} from '../../../redux/listProducts/ListProductsAction'
+import {SORT_NAME, SORT_TYPE, SORT_PRICE, SORT_INVENTORY, ASCEND, DESCEND} from '../../../redux/ProductsDataType'
 import './HeadButton.scss'
 import ArrowUp from './images/arrow_up.jpg'
 import ArrowDown from './images/arrow_down.jpg'
@@ -38,14 +38,14 @@ class HeadButton extends React.Component{
         switch(this.state.buttonState){
             case ASCEND:
                 return <img className="arrow" src={ArrowDown} alt="-"/>
-            case DECEND:
+            case DESCEND:
                 return <img className="arrow" src={ArrowUp} alt="-"/>
             default:
                 return ''
         }
     }
     onClick=e=>{
-        this.props.dispatch(updateSort( this.props.type ) )
+        this.props.dispatch(updateSortAction( this.props.type ) )
     }
 
     render(){

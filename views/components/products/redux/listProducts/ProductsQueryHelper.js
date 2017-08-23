@@ -1,35 +1,24 @@
+import {SORT_NAME, SORT_TYPE, SORT_PRICE, SORT_INVENTORY, ASCEND} from '../ProductsDataType'
+
 let allProducts = []
 let sortedProducts = []
 let searchProducts = []
-let dictAllProductsById = {}
-let dictProductsType = {}
-let dictSortType = {}
-
-let currentSortType = ''
-let currentDirection = ''
 
 
 export const updateAllProducts = products => {
     allProducts = products
-    sortedProducts = [...allProducts] //don't mutate me!!!
+    sortedProducts = [...allProducts]
     searchProducts = [...sortedProducts]
-    dictAllProductsById = {}
-    dictProductsType = []
-    dictSortType = {}
-    for(let i=0; i<allProducts.length; i++){
-        //update dictionary (hashMap) to get product by id
-        dictAllProductsById[ allProducts[i].id ] = allProducts[i]
-
-        if( !dictProductsType[ allProducts[i].type ] ){
-            dictProductsType[ allProducts[i].type ] = []
-        }
-        dictProductsType[ allProducts[i].type ].push( allProducts[i] )
-    }
-} 
+}
 
 export const addSearchText = text => {
-    const isSearchIsNumber = text!=='' && !isNaN(text)
+    //check search text is not empty
+    if(text === ''){
+        return searchProducts = [...sortedProducts]
+    }
+    
     searchProducts = [] 
+    const isSearchIsNumber = text!=='' && !isNaN(text)
 
     if(isSearchIsNumber){
         const searchNumber = (+text) 
@@ -48,9 +37,45 @@ export const addSearchText = text => {
     }
 }
 
-export const sortBy = (sortType, direction)=>{
-    if( !dictSortType[sortType] ){
-        dictSortType[sortType] = {}
+export const sortBy = (sortType, sortDirection)=>{
+    sortedProducts = [...allProducts]
+    if(sortType === SORT_NAME || sortType === SORT_TYPE){
+        if( sortDirection === ASCEND){
+            sortedProducts.sort((a,b)=>{
+                let x = a[sortType].toUpperCase()
+                let y = b[sortType].toUpperCase()
+                if (x > y) {
+                    return 1
+                }else if (x < y) {
+                    return -1
+                }else{
+                    return 0
+                }
+            })
+        }else{
+            sortedProducts.sort((a,b)=>{
+                let x = b[sortType].toUpperCase()
+                let y = a[sortType].toUpperCase()
+                if (x > y) {
+                    return 1
+                }else if (x < y) {
+                    return -1
+                }else{
+                    return 0
+                }
+            })
+
+        }
+    }else if(sortType === SORT_PRICE || sortType === SORT_INVENTORY){
+        if( sortDirection === ASCEND){
+            sortedProducts.sort((a,b)=>{
+                return a[sortType] - b[sortType]
+            })
+        }else{
+            sortedProducts.sort((a,b)=>{
+                return b[sortType] - a[sortType]
+            })
+        }
     }
 }
 
@@ -63,7 +88,7 @@ export const getCurrentProducts = (itemsPerPage, currentPageId)=>{
     if( currentPageId < 0){
         currentPageId = 0
     }
-    const products = []
+    const displayProducts = []
 
     //check start and end
     const startId = itemsPerPage * currentPageId
@@ -71,10 +96,10 @@ export const getCurrentProducts = (itemsPerPage, currentPageId)=>{
 
     //update new products to display
     for( let i=startId; i<=endId && i <= searchProducts.length-1; i++ ){
-        products.push( searchProducts[i] )
+        displayProducts.push( searchProducts[i] )
     }
     return {
-        products,
+        displayProducts,
         currentPageId,
         totalPage,
     }
