@@ -29,12 +29,7 @@ class Table extends React.Component {
                     {
                         this.props.displayProducts.map((product, i) => {
                             return <Item
-                                id={product.id}
-                                name={product.name}
-                                thumbnail={product.thumbnail}
-                                type={product.type}
-                                price={product.price}
-                                inventory={product.inventory}
+                                product={product}
                                 key={i}
                             />
                         })

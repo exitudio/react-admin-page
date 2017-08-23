@@ -2,7 +2,6 @@ import { applyMiddleware, createStore, compose, combineReducers } from 'redux'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 
-import pageReducer from './reducers/pageReducer'
 import loadProductsReducer from '../components/products/redux/loadProducts/LoadProductsReducer'
 import listProductsReducer from '../components/products/redux/listProducts/ListProductsReducer'
 
@@ -16,7 +15,6 @@ const middleware = compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
 )
 const allReducers = combineReducers({
-    pageReducer,
     loadProductsReducer,
     listProductsReducer,
 })

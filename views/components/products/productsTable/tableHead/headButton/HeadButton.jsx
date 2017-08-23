@@ -49,7 +49,7 @@ class HeadButton extends React.Component{
     }
 
     render(){
-        return <th onClick={this.onClick}>
+        return <th className={this.props.className} onClick={this.onClick}>
                     <div className={this.getAlignClass()}>
                         <div className="text-column">
                             {this.props.children}

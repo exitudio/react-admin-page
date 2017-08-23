@@ -1,18 +1,21 @@
 import {SORT_NAME, SORT_TYPE, SORT_PRICE, SORT_INVENTORY, ASCEND} from '../ProductsDataType'
 
-let allProducts = []
-let sortedProducts = []
-let searchProducts = []
-
-
 export const updateAllProducts = products => {
-    allProducts = products
-    sortedProducts = [...allProducts]
-    searchProducts = [...sortedProducts]
+    const hashMapProductById = {}
+    for(let i=0; i<products.length; i++){
+        hashMapProductById[ products[i].id ] = products[i]
+    }
+    return {
+        allProducts: [...products],
+        sortedProducts: [...products],
+        searchProducts: [...products],
+        hashMapProductById,
+    }
 }
 
-export const addSearchText = text => {
+export const addSearchText = (text, sortedProducts) => {
     //check search text is not empty
+    let searchProducts
     if(text === ''){
         return searchProducts = [...sortedProducts]
     }
@@ -35,10 +38,11 @@ export const addSearchText = text => {
             }
         }
     }
+    return searchProducts
 }
 
-export const sortBy = (sortType, sortDirection)=>{
-    sortedProducts = [...allProducts]
+export const sortBy = (sortType, sortDirection, allProducts)=>{
+    let sortedProducts = [...allProducts]
     if(sortType === SORT_NAME || sortType === SORT_TYPE){
         if( sortDirection === ASCEND){
             sortedProducts.sort((a,b)=>{
@@ -77,9 +81,10 @@ export const sortBy = (sortType, sortDirection)=>{
             })
         }
     }
+    return sortedProducts
 }
 
-export const getCurrentProducts = (itemsPerPage, currentPageId)=>{
+export const getCurrentProducts = (itemsPerPage, currentPageId, searchProducts)=>{
     //reset all data
     const totalPage = Math.ceil(searchProducts.length/itemsPerPage)
     if( currentPageId > totalPage-1){

@@ -37,6 +37,7 @@ export const getProductsAction = () => {
                 dispatch( updateAllProductsAction(response.data) )
             })
             .catch(response => {
+                console.log(response)
                 dispatch({
                     type: GET_PRODUCTS_FAIL,
                 })

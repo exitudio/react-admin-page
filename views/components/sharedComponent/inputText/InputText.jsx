@@ -26,9 +26,15 @@ export default class InputText extends React.Component {
         })
 
     }
+    onBlur = e =>{
+        if (this.props.onBlur) {
+            this.props.onBlur()
+        }
+    }
     render() {
         return <input className={`${this.props.className || ''} input-text`}
                       onChange={this.onChange}
+                      onBlur={this.onBlur}
                       value={this.state.value || ''}
                       placeholder={this.props.placeholder} />
     }
@@ -41,4 +47,5 @@ InputText.propTypes = {
         PropTypes.number,
     ]),
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
 }

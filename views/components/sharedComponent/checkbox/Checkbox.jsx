@@ -7,9 +7,13 @@ class Checkbox extends React.Component{
             this.props.checkCallback(e.target.checked)
         }
     }
+    onChange = ()=>{}
     render(){
         return <label className={`${this.props.className||''} checkbox`} >
-                    <input type="checkbox" onClick={this.onClick} checked={this.props.checked===undefined?false:this.props.checked}/>
+                    <input type="checkbox" 
+                           onClick={this.onClick} 
+                           checked={this.props.checked===undefined?false:this.props.checked} 
+                           onChange={this.onChange}/>
                     <span></span>
                 </label>
     }

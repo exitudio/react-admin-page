@@ -10,15 +10,15 @@ const TableHead = props=>{
     }
     return <thead>
                 <tr>
-                    <th>
+                    <th style={{width:"10px"}}>
                         <div className="checkbox-wrapper">
                             <Checkbox checkCallback={checkCallback} checked={props.isEditAll}/>
                         </div>
                     </th>
                     <HeadButton type={SORT_NAME} align="left" >Name</HeadButton>
-                    <HeadButton type={SORT_TYPE}>Type</HeadButton>
-                    <HeadButton type={SORT_PRICE}>Price</HeadButton>
-                    <HeadButton type={SORT_INVENTORY}>Inventory</HeadButton>
+                    <HeadButton className="fix-width" type={SORT_TYPE}>Type</HeadButton>
+                    <HeadButton className="fix-width" type={SORT_PRICE}>Price</HeadButton>
+                    <HeadButton className="fix-width" type={SORT_INVENTORY}>Inventory</HeadButton>
                 </tr>
             </thead>
 }
