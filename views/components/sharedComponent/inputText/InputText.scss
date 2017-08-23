@@ -1,0 +1,5 @@
+@import '../../../scss/Config.scss';
+.input-text{
+    width: 100%;
+    @extend %input-style;
+}

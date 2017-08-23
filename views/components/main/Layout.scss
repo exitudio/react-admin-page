@@ -14,10 +14,6 @@ body{
     font-family: "Lato",Arial,Helvetica,sans-serif;
 }
 
-input{
-    width: 100%;
-    @extend %input-style;
-}
 input:focus{
     border-color: $blue-dark;
 }

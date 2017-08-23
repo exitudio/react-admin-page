@@ -1,14 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {updateSort} from '../../../redux/listProducts/ListProductsAction'
+import {SORT_NAME, SORT_TYPE, SORT_PRICE, SORT_INVENTORY, ASCEND, DECEND} from '../../../redux/ProductsDataType'
 import './HeadButton.scss'
 import ArrowUp from './images/arrow_up.jpg'
 import ArrowDown from './images/arrow_down.jpg'
 
 
-export default class HeadButton extends React.Component{
-    static STATE_ASCEND = 'ascend'
-    static STATE_DECEND = 'decend'
-    static STATE_NONE = 'none'
+class HeadButton extends React.Component{
+    constructor(props){
+        super(props)
+        
+        const buttonState = this.getButtonState(props)
+        this.state={buttonState}
+    }
+
+    getButtonState = props=>{
+        let buttonState = ''
+        if( props.sortType === props.type){
+            buttonState = props.sortDirection
+        }
+        return buttonState
+    }
+
+    componentWillReceiveProps(nextProps){
+        const buttonState = this.getButtonState(nextProps)
+        this.setState({buttonState})
+    }
 
     getAlignClass =()=> {
         return this.props.align && this.props.align==='left' ? 
@@ -16,18 +35,21 @@ export default class HeadButton extends React.Component{
                     'head-wrapper'
     }
     getArrowComponent=()=>{
-        switch(this.props.buttonState){
-            case HeadButton.STATE_ASCEND:
+        switch(this.state.buttonState){
+            case ASCEND:
                 return <img className="arrow" src={ArrowDown} alt="-"/>
-            case HeadButton.STATE_DECEND:
+            case DECEND:
                 return <img className="arrow" src={ArrowUp} alt="-"/>
             default:
                 return ''
         }
     }
+    onClick=e=>{
+        this.props.dispatch(updateSort( this.props.type ) )
+    }
 
     render(){
-        return <th>
+        return <th onClick={this.onClick}>
                     <div className={this.getAlignClass()}>
                         <div className="text-column">
                             {this.props.children}
@@ -39,10 +61,18 @@ export default class HeadButton extends React.Component{
 }
 HeadButton.propTypes = {
     align: PropTypes.oneOf(['left','right']),
-    buttonState: PropTypes.oneOf([ 
-        HeadButton.STATE_ASCEND,
-        HeadButton.STATE_DECEND, 
-        HeadButton.STATE_NONE]
+    type: PropTypes.oneOf([ 
+        SORT_NAME,
+        SORT_TYPE, 
+        SORT_PRICE, 
+        SORT_INVENTORY]
     ).isRequired,
 }
 
+const mapStateToProps = state=>{
+    return {
+        sortType: state.listProductsReducer.sortType,
+        sortDirection: state.listProductsReducer.sortDirection,
+    }
+}
+export default connect(mapStateToProps)(HeadButton)

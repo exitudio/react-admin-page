@@ -1,19 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './NameColumn.scss'
+import InputText from '../../../../sharedComponent/inputText/InputText.jsx'
 
-const getNameComponent = active=>{
+const getNameComponent = (active, name)=>{
     if(active){
-        return <input className="item-name" defaultValue="High Waist Jeans"></input>
+        return <InputText className="item-name" value={name} />
     }else{
-        return <div className="item-name">High Waist Jeans</div>
+        return <div className="item-name">{name}</div>
     }
 }
-export default props=>{
+const NameColumn = props=>{
     return <td className="name-column">
                     <div className="name-column-wrapper">
-                        {/* <Checkbox className="align-center"/> */}
-                        <img src="/item.jpg" className="thumbnail" alt="item-thumbnail"/>
-                        {getNameComponent(props.active)}
+                        <img src={props.thumbnail} className="thumbnail" alt="item-thumbnail"/>
+                        {getNameComponent(props.active, props.name)}
                     </div>
                 </td>
 }
+NameColumn.propTypes = {
+    active: PropTypes.bool,
+    name: PropTypes.string,
+    thumbnail: PropTypes.string,
+}
+
+export default NameColumn

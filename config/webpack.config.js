@@ -1,4 +1,4 @@
-process.noDeprecation = true; // for close warning in webpack 2.2.1 [https://github.com/vuejs/vue-loader/issues/666]
+process.noDeprecation = true // for close warning in webpack 2.2.1 [https://github.com/vuejs/vue-loader/issues/666]
 const path = require('path')
 const paths = require('./paths')
 const webpack = require('webpack')

@@ -3,6 +3,8 @@ import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 
 import pageReducer from './reducers/pageReducer'
+import loadProductsReducer from '../components/products/redux/loadProducts/LoadProductsReducer'
+import listProductsReducer from '../components/products/redux/listProducts/ListProductsReducer'
 
 
 const logger = createLogger({
@@ -15,6 +17,8 @@ const middleware = compose(
 )
 const allReducers = combineReducers({
     pageReducer,
+    loadProductsReducer,
+    listProductsReducer,
 })
 
 export default createStore(allReducers, middleware)

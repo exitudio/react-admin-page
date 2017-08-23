@@ -1,0 +1,1 @@
+export const PRODUCTS_URL = 'http://private-anon-33f36337fa-weeblyfrontendtrialapi.apiary-mock.com/products'
