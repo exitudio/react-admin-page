@@ -3,7 +3,7 @@ import path from 'path'
 import express from "express"
 import bodyParser from 'body-parser'
 //import mongooseInit from './libs/mongoose-init'
-import {initServices} from './services'
+// import {initServices} from './services'
 
 
 const serverRoot = path.resolve(process.cwd(), "src")
@@ -21,7 +21,7 @@ function listening(){
 	console.log('listening in port '+port)
 }
 app.listen(port, listening)
-initServices(app)
+// initServices(app)
 
 //set fallback url to public/index.html
 const dirname = path.resolve(); // for fixing empty path problem when using gulp

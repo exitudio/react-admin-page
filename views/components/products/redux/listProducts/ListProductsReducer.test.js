@@ -8,7 +8,7 @@ describe('ListProductsReducer Redux', () => {
         expect(listProductsReducer(undefined, {})).toEqual( inititialState )
     })
 
-    it('should update all products', () => {
+    /* it('should update all products', () => {
         const action = Action.updateAllProductsAction(ReducerData.data1)
         const newState = {
             ...inititialState,
@@ -20,7 +20,7 @@ describe('ListProductsReducer Redux', () => {
             hashMapProductById: ReducerData.data1Hash
         }
         Reducer(listProductsReducer).expect( action ).toReturnState(newState)
-    })
+    }) */
 
     it('should update item per page to 10', () => {
         const action = Action.updateItemPerPageAction(10)

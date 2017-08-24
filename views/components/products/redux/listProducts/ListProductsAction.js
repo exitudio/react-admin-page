@@ -11,7 +11,7 @@ export const EDIT_ALL_PRODUCT = 'edit_all_product'
 export const updateAllProductsAction = products => {
     let newProducts = []
     for(let i=0; i<products.length; i++){
-        let localProductJSON = localStorage.getItem(products[i].id)
+        let localProductJSON = localStorage?localStorage.getItem(products[i].id):null
         let newProduct = ''
         if(localProductJSON!==null){
             console.log(localProductJSON)
